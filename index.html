@@ -1,0 +1,59 @@
+   html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Bot Logs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 20px;
+      font-family: monospace;
+      background: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Telegram Bot Logs</h1>
+  <textarea id="logInput" placeholder="Paste logs or type here..."></textarea>
+  <button onclick="processLogs()">Process Logs</button>
+  <div class="output" id="output"></div>
+
+  <script>
+    // Function to process logs
+    function processLogs() {
+      const input = document.getElementById('logInput').value;
+      const outputDiv = document.getElementById('output');
+
+      if (!input) {
+        outputDiv.innerHTML = "No logs provided.";
+        return;
+      }
+
+      // Example: Split logs into lines and count them
+      const lines = input.split('\n');
+      outputDiv.innerHTML = `
+        <p><strong>Total lines:</strong> ${lines.length}</p>
+        <p><strong>Processed logs:</strong></p>
+        <pre>${lines.map((line, index) => `${index + 1}: ${line}`).join('\n')}</pre>
+      `;
+    }
+  </script>
+</body>
+</html>
